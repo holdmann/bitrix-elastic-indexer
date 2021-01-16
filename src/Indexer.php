@@ -89,6 +89,11 @@ class Indexer
         $mapping->setProperty('NAV_CHAIN_CODES', new PropertyMapping('keyword'));
 
         if (CModule::IncludeModule('catalog')) {
+
+            foreach (array_keys(PropertyMapping::$catalogFieldTypesMap) as $field) {
+                $mapping->setProperty($field, PropertyMapping::fromBitrixField($field));
+            }
+            
             $rs = CCatalogStore::GetList();
             while ($store = $rs->Fetch()) {
                 $mapping->setProperty('CATALOG_STORE_AMOUNT_' . $store['ID'], new PropertyMapping('integer'));

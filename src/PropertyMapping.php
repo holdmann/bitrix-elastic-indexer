@@ -44,6 +44,38 @@ class PropertyMapping implements JsonSerializable
         'SEARCHABLE_CONTENT' => ['keyword'],
         'TAGS' => ['keyword'],
     ];
+
+    public static $catalogFieldTypesMap = [
+        'TYPE' => ['integer'],
+        'AVAILABLE' => ['boolean'],
+        'BUNDLE' => ['boolean'],
+        'QUANTITY' => ['float'], // or integer ?
+        'QUANTITY_TRACE' => ['boolean'],
+        'CAN_BUY_ZERO' => ['boolean'],
+        // 'MEASURE', не понятно
+        'SUBSCRIBE' => ['boolean'],
+        'VAT_ID' => ['integer'],
+        'VAT_INCLUDED' =>  ['boolean'],
+        'WEIGHT' => ['float'],
+        'WIDTH' => ['float'],
+        'LENGTH' => ['float'],
+        'HEIGHT' => ['float'],
+        'PAYMENT_TYPE' => ['keyword'],
+        //'RECUR_SCHEME_LENGTH',
+        'RECUR_SCHEME_TYPE' => ['keyword'],
+        'TRIAL_PRICE_ID' => ['integer'],
+
+
+        'QUANTITY_TRACE_RAW' => ['keyword'],
+        'CAN_BUY_ZERO_RAW' => ['keyword'],
+        'SUBSCRIBE_RAW' => ['keyword'],
+        //'PURCHASING_PRICE',
+        'PURCHASING_CURRENCY' => ['keyword'],
+        'BARCODE_MULTI' => ['boolean'],
+        'WITHOUT_ORDER' => ['boolean'],
+
+//        'IBLOCK_LID' => ['alias', ['path' => 'LID']],
+    ];
     /**
      * @var ArrayObject
      */
