@@ -124,14 +124,23 @@ class PropertyMapping implements JsonSerializable
      */
     public static function fromBitrixField(string $field)
     {
-        if (!(array_key_exists($field, self::$bitrixFieldTypesMap)
-            || array_key_exists($field, self::$catalogFieldTypesMap))
-        ) {
+        $indexType = null;
+        $indexParameters = [];
+
+        if (array_key_exists($field, self::$bitrixFieldTypesMap)) {
+            $indexType = self::$bitrixFieldTypesMap[$field][0];
+            $indexParameters = self::$bitrixFieldTypesMap[$field][1] ?? [];
+        }
+
+        if (array_key_exists($field, self::$catalogFieldTypesMap)) {
+            $indexType = self::$catalogFieldTypesMap[$field][0];
+            $indexParameters = self::$catalogFieldTypesMap[$field][1] ?? [];
+        }
+
+        if ($indexType === null) {
             throw new InvalidArgumentException('Для поля ' . $field . ' не предопределён тип.');
         }
 
-        $indexType = self::$bitrixFieldTypesMap[$field][0];
-        $indexParameters = self::$bitrixFieldTypesMap[$field][1] ?? [];
         return new self($indexType, $indexParameters);
     }
 
