@@ -12,6 +12,9 @@ class PropertyMapping implements JsonSerializable
 {
     public static $bitrixFieldTypesMap = [
         'LID' => ['keyword'],
+        'IBLOCK_SITE_ID' => ['alias', ['path' => 'LID']],
+        'IBLOCK_LID' => ['alias', ['path' => 'LID']],
+        'SITE_ID' => ['alias', ['path' => 'LID']],
         'IBLOCK_TYPE_ID' => ['keyword'],
         'IBLOCK_ID' => ['integer'],
         'IBLOCK_CODE' => ['keyword'],
