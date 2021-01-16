@@ -124,7 +124,9 @@ class PropertyMapping implements JsonSerializable
      */
     public static function fromBitrixField(string $field)
     {
-        if (!array_key_exists($field, self::$bitrixFieldTypesMap)) {
+        if (!array_key_exists($field, self::$bitrixFieldTypesMap)
+            || !array_key_exists($field, self::$catalogFieldTypesMap)
+        ) {
             throw new InvalidArgumentException('Для поля ' . $field . ' не предопределён тип.');
         }
 
