@@ -10,6 +10,8 @@ use CIBlockElement;
 use CIBlockProperty;
 use CIBlockSection;
 use CModule;
+use Bitrix\Main;
+use CCatalogSku;
 use CPrice;
 use Elasticsearch\Client;
 use Exception;
@@ -88,12 +90,15 @@ class Indexer
         $mapping->setProperty('NAV_CHAIN_IDS', new PropertyMapping('integer'));
         $mapping->setProperty('NAV_CHAIN_CODES', new PropertyMapping('keyword'));
 
-        if (CModule::IncludeModule('catalog')) {
 
+        if (Main\Loader::includeModule('catalog')
+            && ($catalog = CCatalogSku::GetInfoByIBlock($infoBlockId))
+            && is_array($catalog)
+        ) {
             foreach (array_keys(PropertyMapping::$catalogFieldTypesMap) as $field) {
                 $mapping->setProperty($field, PropertyMapping::fromBitrixField($field));
             }
-            
+
             $rs = CCatalogStore::GetList();
             while ($store = $rs->Fetch()) {
                 $mapping->setProperty('CATALOG_STORE_AMOUNT_' . $store['ID'], new PropertyMapping('integer'));
@@ -224,7 +229,10 @@ class Indexer
             return $group['CODE'];
         }, $navChain)));
 
-        if (CModule::IncludeModule('catalog')) {
+        if (Main\Loader::includeModule('catalog')
+            && ($catalog = CCatalogSku::GetInfoByIBlock($element->fields['IBLOCK_ID']))
+            && is_array($catalog)
+        ) {
             $rs = CCatalogStoreProduct::GetList(null, ['PRODUCT_ID' => $element->fields['ID']]);
             while ($entry = $rs->Fetch()) {
                 $data['CATALOG_STORE_AMOUNT_' . $entry['STORE_ID']] = $entry['AMOUNT'];
