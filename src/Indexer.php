@@ -71,6 +71,11 @@ class Indexer
                     'PROPERTY_' . $property['ID'] . '_VALUE',
                     new PropertyMapping('alias', ['path' => 'PROPERTY_' . $property['CODE'] . '_VALUE'])
                 );
+
+                $mapping->setProperty(
+                    'PROPERTYSORT_' . $property['CODE'],
+                    new PropertyMapping('integer')
+                );
             } else {
                 $mapping->setProperty(
                     'PROPERTY_' . $property['CODE'],
@@ -197,6 +202,7 @@ class Indexer
             if ($property['PROPERTY_TYPE'] === 'L') {
                 $data['PROPERTY_' . $property['CODE']] = $property['VALUE_ENUM_ID'];
                 $data['PROPERTY_' . $property['CODE'] . '_VALUE'] = $property['VALUE'];
+                $data['PROPERTYSORT_' . $property['CODE']] = $property['VALUE_SORT'];
             } else {
                 $data['PROPERTY_' . $property['CODE']] = $property['VALUE'];
             }
