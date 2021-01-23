@@ -74,7 +74,7 @@ class Indexer
 
                 $mapping->setProperty(
                     'PROPERTYSORT_' . $property['CODE'],
-                    new PropertyMapping('integer')
+                    new PropertyMapping('integer', ['fields' => ['enum' => ['type' => 'integer']]])
                 );
             } else {
                 $mapping->setProperty(

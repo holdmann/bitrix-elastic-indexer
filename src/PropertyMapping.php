@@ -44,37 +44,57 @@ class PropertyMapping implements JsonSerializable
         'SEARCHABLE_CONTENT' => ['keyword'],
         'TAGS' => ['keyword'],
     ];
-
+    
     public static $catalogFieldTypesMap = [
         'TYPE' => ['integer'],
+        'CATALOG_TYPE' => ['alias', ['path' => 'TYPE']],
         'AVAILABLE' => ['keyword'],
+        'CATALOG_AVAILABLE' => ['alias', ['path' => 'AVAILABLE']],
         'BUNDLE' => ['keyword'],
+        'CATALOG_BUNDLE' => ['alias', ['path' => 'BUNDLE']],
         'QUANTITY' => ['float'], // or integer ?
+        'CATALOG_QUANTITY' => ['alias', ['path' => 'QUANTITY']],
         'QUANTITY_TRACE' => ['keyword'],
+        'CATALOG_QUANTITY_TRACE' => ['alias', ['path' => 'QUANTITY_TRACE']],
         'CAN_BUY_ZERO' => ['keyword'],
+        'CATALOG_CAN_BUY_ZERO' => ['alias', ['path' => 'CAN_BUY_ZERO']],
         // 'MEASURE', не понятно
         'SUBSCRIBE' => ['keyword'],
+        'CATALOG_SUBSCRIBE' => ['alias', ['path' => 'SUBSCRIBE']],
         'VAT_ID' => ['integer'],
+        'CATALOG_VAT_ID' => ['alias', ['path' => 'VAT_ID']],
         'VAT_INCLUDED' =>  ['keyword'],
+        'CATALOG_VAT_INCLUDED' =>  ['alias', ['path' => 'VAT_INCLUDED']],
         'WEIGHT' => ['float'],
+        'CATALOG_WEIGHT' => ['alias', ['path' => 'WEIGHT']],
         'WIDTH' => ['float'],
+        'CATALOG_WIDTH' => ['alias', ['path' => 'WIDTH']],
         'LENGTH' => ['float'],
+        'CATALOG_LENGTH' => ['alias', ['path' => 'LENGTH']],
         'HEIGHT' => ['float'],
+        'CATALOG_HEIGHT' => ['alias', ['path' => 'HEIGHT']],
         'PAYMENT_TYPE' => ['keyword'],
         //'RECUR_SCHEME_LENGTH',
         'RECUR_SCHEME_TYPE' => ['keyword'],
+        'CATALOG_RECUR_SCHEME_TYPE' => ['alias', ['path' => 'RECUR_SCHEME_TYPE']],
         'TRIAL_PRICE_ID' => ['integer'],
+        'CATALOG_TRIAL_PRICE_ID' => ['alias', ['path' => 'TRIAL_PRICE_ID']],
 
 
-        'QUANTITY_TRACE_RAW' => ['keyword'],
-        'CAN_BUY_ZERO_RAW' => ['keyword'],
-        'SUBSCRIBE_RAW' => ['keyword'],
+        'QUANTITY_TRACE_RAW' => ['keyword'], // RAW or ORIG?
+        'CAN_BUY_ZERO_RAW' => ['keyword'], // RAW or ORIG?
+        'SUBSCRIBE_RAW' => ['keyword'], // RAW or ORIG?
         //'PURCHASING_PRICE',
         'PURCHASING_CURRENCY' => ['keyword'],
+        'CATALOG_PURCHASING_CURRENCY' => ['alias', ['path' => 'PURCHASING_CURRENCY']],
         'BARCODE_MULTI' => ['keyword'],
         'WITHOUT_ORDER' => ['keyword'],
+        'CATALOG_WITHOUT_ORDER' => ['alias', ['path' => 'WITHOUT_ORDER']],
 
-//        'IBLOCK_LID' => ['alias', ['path' => 'LID']],
+        'QUANTITY_RESERVED' => ['float'],
+        'CATALOG_QUANTITY_RESERVED' => ['alias', ['path' => 'QUANTITY_RESERVED']],
+
+        'CATALOG_NEGATIVE_AMOUNT_TRACE' => ['keyword'],
     ];
     /**
      * @var ArrayObject
