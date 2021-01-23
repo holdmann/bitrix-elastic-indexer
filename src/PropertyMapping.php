@@ -24,7 +24,7 @@ class PropertyMapping implements JsonSerializable
         'EXTERNAL_ID' => ['alias', ['path' => 'XML_ID']],
         'CODE' => ['keyword'],
         'NAME' => ['keyword'],
-        'ACTIVE' => ['boolean'],
+        'ACTIVE' => ['keyword'],
         'DETAIL_PAGE_URL' => ['keyword'],
         'LIST_PAGE_URL' => ['keyword'],
         'TIMESTAMP_X' => ['date', ['format' => 'yyyy-MM-dd HH:mm:ss||yyyy-MM-dd']],
@@ -47,15 +47,15 @@ class PropertyMapping implements JsonSerializable
 
     public static $catalogFieldTypesMap = [
         'TYPE' => ['integer'],
-        'AVAILABLE' => ['boolean'],
-        'BUNDLE' => ['boolean'],
+        'AVAILABLE' => ['keyword'],
+        'BUNDLE' => ['keyword'],
         'QUANTITY' => ['float'], // or integer ?
-        'QUANTITY_TRACE' => ['boolean'],
-        'CAN_BUY_ZERO' => ['boolean'],
+        'QUANTITY_TRACE' => ['keyword'],
+        'CAN_BUY_ZERO' => ['keyword'],
         // 'MEASURE', не понятно
-        'SUBSCRIBE' => ['boolean'],
+        'SUBSCRIBE' => ['keyword'],
         'VAT_ID' => ['integer'],
-        'VAT_INCLUDED' =>  ['boolean'],
+        'VAT_INCLUDED' =>  ['keyword'],
         'WEIGHT' => ['float'],
         'WIDTH' => ['float'],
         'LENGTH' => ['float'],
@@ -71,8 +71,8 @@ class PropertyMapping implements JsonSerializable
         'SUBSCRIBE_RAW' => ['keyword'],
         //'PURCHASING_PRICE',
         'PURCHASING_CURRENCY' => ['keyword'],
-        'BARCODE_MULTI' => ['boolean'],
-        'WITHOUT_ORDER' => ['boolean'],
+        'BARCODE_MULTI' => ['keyword'],
+        'WITHOUT_ORDER' => ['keyword'],
 
 //        'IBLOCK_LID' => ['alias', ['path' => 'LID']],
     ];
